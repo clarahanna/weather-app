@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #89CFF0; /* Baby blue color */
+    color: black; /* Changing text color to black for better contrast */
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif; /* Apply a default font */
+  }
+  
+  .weather-app {
+    padding: 20px; /* Add padding around your app content */
+  }
+  

@@ -1,0 +1,11 @@
+<!--<p>weather-data works!</p>-->
+
+<div *ngIf="weatherData">
+  <h2>Weather Data</h2>
+  <p>Current Temperature: {{ weatherData.main.temp }} °C</p>
+  <p>Humidity: {{ weatherData.main.humidity }} %</p>
+  <p>Wind Speed: {{ weatherData.wind.speed }} km/h</p>
+  <p>Lowest Temperature: {{ weatherData.main.temp_min }} °C</p>
+  <p>Highest Temperature: {{ weatherData.main.temp_max }} °C</p>
+  <p>Condition: {{ weatherData.weather[0].description }}</p>
+</div>

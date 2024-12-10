@@ -1,0 +1,37 @@
+.search-bar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between input and button */
+    margin-bottom: 20px; /* Space below the search bar */
+}
+
+.search-bar input {
+    flex: 1; /* Allow input to grow */
+    padding: 10px; /* Padding inside the input */
+    border: 1px solid #ccc; /* Border for input */
+    border-radius: 5px; /* Rounded corners for input */
+    margin-right: 10px; /* Space between input and button */
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    color: black; /* Text color changed to black */ 
+    font-size: 16px; /* Font size for better readability */ 
+    outline: none; /* Remove default outline on focus */
+}
+
+.search-bar button {
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for button */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition */
+    font-size: 16px; /* Font size for better readability */
+}
+
+.search-bar button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.search-bar input:focus { 
+    border-color: #007bff; /* Change border color on focus */ 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow effect on focus */
+}

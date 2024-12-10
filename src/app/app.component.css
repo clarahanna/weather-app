@@ -1,0 +1,17 @@
+.app-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  app-weather,
+  app-search-bar,
+  app-weather-image,
+  app-weather-data {
+    margin: 20px 0;
+  }

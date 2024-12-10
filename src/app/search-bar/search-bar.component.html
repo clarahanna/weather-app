@@ -1,0 +1,13 @@
+<p>search-bar works!</p>
+<!--<input type="text" (input)="onSearch($event.target.value)" placeholder="Enter city name">-->
+
+<div class="search-bar">
+    <input 
+      type="text" 
+      [(ngModel)]="city" 
+      placeholder="Enter city name" 
+      (keyup.enter)="onSearch()" 
+    />
+    <button (click)="onSearch()">Search</button>
+    <button (click)="onSearch('location')">Get Weather</button>
+  </div>

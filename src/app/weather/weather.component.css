@@ -15,66 +15,12 @@
     color: white; /* Ensure the text color is white */
 }
 
-.search-bar {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space between input and button */
-    margin-bottom: 20px; /* Space below the search bar */
-}
-
-.search-bar input {
-    flex: 1; /* Allow input to grow */
-    padding: 10px; /* Padding inside the input */
-    border: 1px solid #ccc; /* Border for input */
-    border-radius: 5px; /* Rounded corners for input */
-    margin-right: 10px; /* Space between input and button */
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-    color: white;
-
-}
-
-.search-bar button {
-    padding: 10px 15px; /* Padding for button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners for button */
-    background-color: #007bff; /* Bootstrap primary color */
-    color: white; /* Text color */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s; /* Smooth transition */
-}
-
-.search-bar button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
 .weather-card {
     text-align: center; /* Center-align text and images */
 }
 
 .weather-info {
     margin-top: 20px; /* Space between images and temperature */
-}
-
-.weatherWidgetRow {
-    display: block; /* Block display for rows */
-    margin: 0 auto; /* Center the rows */
-    width: fit-content; /* Fit content width */
-}
-
-.sun {
-    margin-top: 10px; /* Space above the sun icon */
-    color: yellow; /* Sun color */
-    filter: drop-shadow(1px 1px 10px yellow); /* Shadow effect */
-}
-
-.moon-image {
-    width: 100px; /* Set the desired width */
-    height: auto; /* Maintain aspect ratio */
-    margin-top: 10px; /* Space above the image */
-}
-
-.cloud {
-    color: rgb(104, 175, 197); /* Cloud color */
-    filter: drop-shadow(1px 1px 5px rgb(104, 175, 197)); /* Shadow effect */
 }
 
 .temperature {
@@ -94,4 +40,13 @@
 
 .info-item span {
     font-weight: normal; /* Normal weight for labels */
+}
+
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Global font */
+    background-color: #f0f0f0; /* Background color for the app */
+    color: #333
 }

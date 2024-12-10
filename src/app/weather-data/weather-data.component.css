@@ -1,0 +1,22 @@
+.weatherWidgetRow {
+    display: block; /* Block display for rows */
+    margin: 0 auto; /* Center the rows */
+    width: fit-content; /* Fit content width */
+}
+
+.sun {
+    margin-top: 10px; /* Space above the sun icon */
+    color: yellow; /* Sun color */
+    filter: drop-shadow(1px 1px 10px yellow); /* Shadow effect */
+}
+
+.moon-image {
+    width: 100px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 10px; /* Space above the image */
+}
+
+.cloud {
+    color: rgb(104, 175, 197); /* Cloud color */
+    filter: drop-shadow(1px 1px 5px rgb(104, 175, 197)); /* Shadow effect */
+}

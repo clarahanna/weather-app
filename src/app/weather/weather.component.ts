@@ -1,64 +1,68 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { response } from 'express';
+import { Component, OnInit, Input } from '@angular/core';
+import { WeatherService } from '../weather.service'; // Assuming you have a WeatherService
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { WeatherDataComponent } from '../weather-data/weather-data.component';
+import { error } from 'console';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css'],
-  standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [FormsModule, CommonModule], 
+  standalone: true
 })
 export class WeatherComponent implements OnInit {
-  weatherData: any;
-  city: string ="London";
+  city: string = '';
+  // weatherCondition: string = '';
+  @Input() weatherData: any; // Replace any with your actual weather data type
+  
+  constructor(private weatherService: WeatherService) { }
 
-  constructor(){}
-
-  ngOnInit(){
-    this.weatherData = {
-      main: {},
-      isDay: true
-    };
-    this.getWeatherData(this.city);
-    console.log(this.weatherData);
+  ngOnInit() {
+    // You can optionally call detectLocation() here to fetch initial data
+    this.detectLocation();
   }
 
- getWeatherData(city:string) {
-  const apiKey = '53426a1639d6cd40d302a99a96c01ed3'; // Your OpenWeatherMap API key
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-  
-  fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('City not found');
+  changeCity(city: string): void {
+    this.city = city;
+    console.log('City entered:', city);
+    this.weatherService.getWeatherByCity(city).pipe(
+      catchError(error => {
+        console.error('Error fetching weather data:', error);
+        return of(null);
+      })
+    ).subscribe(data => {
+      if (data) {
+        this.weatherData = data;
+      } else {
+        this.weatherData = null;
+      }
+    });
+  }
+
+  public detectLocation(): void { // Make sure this is public
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          this.weatherService.getWeatherByCoordinates(lat, lon).subscribe(data => {
+            if (data)  {
+              this.weatherData = data;
+            }else {
+              this.weatherData = null;
+            }
+        });
+      },
+      error => {
+        console.error('Error getting location', error);
+      }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
     }
-    return response.json();
-  })
-  .then(data => {
-    this.setWeatherData(data);
-  })
-  .catch(error => {
-    console.error('Error fetching weather data:', error);
-    alert('City not found, please try again.');
-  
-  });
-  }
-
-  setWeatherData(data: any){
-    this.weatherData = data;
-    let sunsetTime = new Date(this.weatherData.sys.sunset * 1000);
-    this.weatherData.sunset_time = sunsetTime.toLocaleTimeString();
-    let currentDate = new Date();
-    this.weatherData.isDay = (currentDate.getTime()< sunsetTime.getTime());
-    this.weatherData.temp_celcius = (this.weatherData.main.temp - 273.15).toFixed(0);
-    this.weatherData.temp_min = (this.weatherData.main.temp_min - 273.15).toFixed(0);
-    this.weatherData.temp_max = (this.weatherData.main.temp_max - 273.15).toFixed(0);
-    this.weatherData.temp_feels_like = (this.weatherData.main.temp_feels_like - 273.15);
-  }
-  changeCity(newCity: string) {
-    this.city = newCity;
-    this.getWeatherData(this.city);
   }
 }

@@ -1,1 +1,83 @@
-<app-weather></app-weather>
+<!-- <div style="text-align:center">
+  <h1>Weather App</h1>
+  //<app-search-bar (searchTermChange)="onSearchTermReceived($event)"></app-search-bar>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="city" placeholder="Enter city name">
+    <button (click)="changeCity(city)">Get Weather</button>
+    <button (click)="detectLocation()">Use My Location</button>
+</div>
+  <app-weather *ngIf="weatherData" [weatherData]="weatherData"></app-weather>
+  <app-weather-image *ngIf="weatherCondition" [weatherCondition]="weatherCondition"></app-weather-image>
+  <app-weather-data *ngIf="weatherData" [weatherData]="weatherData"></app-weather-data>
+
+</div> -->
+
+<!-- <div class="weather-app">
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="city" placeholder="Enter city name">
+    <button (click)="changeCity(city)">Get Weather</button>
+    <button (click)="detectLocation()">Use My Location</button>
+  </div>
+  <div *ngIf="weatherData">
+    <app-weather-image [weatherCondition]="weatherData.condition"></app-weather-image>
+    <app-weather-data [weatherData]="weatherData"></app-weather-data>
+  </div>
+  <div class="container">
+    <app-search-bar (searchTermChange)="onCitySearch($event)"></app-search-bar>
+    <app-weather [weatherData]="weatherData"></app-weather>
+  </div>
+  
+  <div *ngIf="hasError">
+    <p class="error-message">{{ errorMessage }}</p>
+  </div>
+  <div *ngIf="isLoading">
+    <p>Loading weather data...</p>
+  </div>
+</div> -->
+
+<!-- <div class="weather-app">
+  <div class="search-bar">
+    <app-search-bar (searchTermChange)="onCitySearch($event)"></app-search-bar>
+    <input type="text" [(ngModel)]="city" placeholder="Enter city name">
+    <button (click)="changeCity(city)">Get Weather</button>
+    <button (click)="detectLocation()">Use My Location</button>
+  </div>
+
+  <div *ngIf="weatherData"> 
+    <app-weather [weatherData]="weatherData"></app-weather> 
+  </div>
+
+  <!- <div *ngIf="weatherData">
+    <app-weather-image [weatherCondition]="weatherData.weather[0].description"></app-weather-image>
+    <app-weather-data [weatherData]="weatherData"></app-weather-data>
+  </div> --
+
+  <div *ngIf="hasError">
+    <p class="error-message">{{ errorMessage }}</p>
+  </div>
+  
+  <div *ngIf="isLoading">
+    <p>Loading weather data...</p>
+  </div>
+</div> -->
+
+<!-- <div class="search-bar">
+  <input placeholder="Enter city" type="text" [(ngModel)]="city"/>
+  <button (click)="getWeatherByCity(city)">Serach</button>
+</div> -->
+
+<div class="weather-app">
+  <app-search-bar (searchTermChange)="onCitySearch($event)"></app-search-bar>
+
+  <div *ngIf="weatherData">
+    <app-weather [weatherData]="weatherData"></app-weather>
+  </div>
+
+  <div *ngIf="hasError">
+    <p class="error-message">{{ errorMessage }}</p>
+  </div>
+  
+  <div *ngIf="isLoading">
+    <p>Loading weather data...</p>
+  </div>
+</div>
